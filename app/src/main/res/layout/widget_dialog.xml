@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true">
+
+    <View
+        android:id="@+id/dialog_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/loading_bg_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/dialog_root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/app_white"
+        android:divider="@drawable/shape_split_line"
+        android:dividerPadding="@dimen/size_10"
+        android:minWidth="280dp"
+        android:minHeight="150dp"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/dialog_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="@dimen/size_12"
+            android:paddingTop="@dimen/size_10"
+            android:paddingRight="@dimen/size_12"
+            android:paddingBottom="@dimen/size_10"
+            android:text="@string/app_dialog_no_sign"
+            android:textColor="@color/app_dialog_text"
+            android:textSize="@dimen/text_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dialog_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_ripple_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/app_dialog_cancel"
+                android:textColor="@color/app_dialog_cancel"
+                android:textSize="@dimen/text_16" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="50dp"
+                android:background="@drawable/shape_split_line" />
+
+            <TextView
+                android:id="@+id/dialog_ok"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_ripple_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/app_dialog_ok"
+                android:textColor="@color/app_main"
+                android:textSize="@dimen/text_16" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

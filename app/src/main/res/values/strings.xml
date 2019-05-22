@@ -1,0 +1,25 @@
+<resources>
+    <!-- 在 build.gradle 中配置了,这里就不需要 app_name 了 -->
+    <!--<string name="app_name">MaxAndroidJava</string>-->
+
+    <!-- ImageView 的默认 description -->
+    <string name="image_des">icon</string>
+
+    <!-- 网络请求失败提示 -->
+    <string name="toast_error_http">网络访问错误</string>
+    <string name="toast_error_connect">网络链接错误</string>
+    <string name="toast_error_time_out">网络链接超时</string>
+    <string name="toast_error_data">数据解析失败</string>
+    <string name="toast_error_unknown">未知错误</string>
+
+    <string name="notice_default_text">消息通知</string>
+    <string name="app_text_loading">正在加载中……</string>
+    <string name="app_finish_splash" formatted="true">跳过 %1$ds</string>
+    <string name="app_dialog_cancel">取消</string>
+    <string name="app_dialog_ok">确定</string>
+    <string name="app_dialog_no_sign">您还没登陆,是否立即登陆?</string>
+    <string name="app_exception_not_sign">用户未登录</string>
+    <string name="app_exception_text">哦豁,程序出问题咯,等下重新打开吧</string>
+    <string name="app_default_version">V1.0.1-beta</string>
+    <string name="app_version" formatted="true">V%1$s</string>
+</resources>

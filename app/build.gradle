@@ -1,0 +1,149 @@
+apply plugin: 'com.android.application'
+/* Realm数据库支持 */
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        /* SVG图支持 */
+        vectorDrawables.useSupportLibrary = true
+        /* dex拆分 */
+        multiDexEnabled true
+        /* 统一维度 */
+        flavorDimensions "versionCode"
+    }
+    buildTypes {
+        release {
+            /* 启用混淆编译 */
+            minifyEnabled true
+            /* 启用对齐优化 */
+            zipAlignEnabled true
+            /* 启用资源过滤 */
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            /* 调试模式打包版本号添加后缀 */
+            versionNameSuffix "-debug"
+            /* 关闭混淆编译 */
+            minifyEnabled false
+            /* 关闭资源过滤 */
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    /* 这个我也不知道啥玩意,反正这么写就对了 */
+    dexOptions {
+        preDexLibraries = false
+    }
+    /* lambda表达式支持 */
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    /* 特性选项配置,可以直接在 Android Studio 左边的 Build Variants 窗口中切换对应的特性版本 */
+    productFlavors {
+        /* 假设这是开发环境的配置 */
+        dev {
+            /* 包名 */
+            applicationId "net.lingin.max.android"
+            /* APP名称 */
+            resValue('string', 'app_name', 'MaxAndroidDev')
+            /* 配置服务器地址 */
+            buildConfigField "String", "SERVER_BASE", '"http://192.168.1.128:8080"'
+        }
+        /* 假设这是测试环境的配置 */
+        beta {
+            /* 包名 */
+            applicationId "net.lingin.max.android"
+            /* APP名称 */
+            resValue('string', 'app_name', 'MaxAndroidBeta')
+            /* 配置服务器地址 */
+            buildConfigField "String", "SERVER_BASE", '"http://test.lingin.net:8080"'
+        }
+        /* 这还有个正式环境配置 */
+        pre {
+            /* 包名 */
+            applicationId "net.lingin.max.android"
+            /* APP名称 */
+            resValue('string', 'app_name', 'MaxAndroidPre')
+            /* 配置服务器地址 */
+            buildConfigField "String", "SERVER_BASE", '"http://app.lingin.net"'
+        }
+    }
+    /* 打包APK的文件名自动配置 */
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (variant.productFlavors[0].name.endsWith("dev")) {
+                outputFileName = "app_dev_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${buildTime()}.apk"
+            } else if (variant.productFlavors[0].name.endsWith("beta")) {
+                outputFileName = "app_beta_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${buildTime()}.apk"
+            } else if (variant.productFlavors[0].name.endsWith("pre")) {
+                outputFileName = "app_pre_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${buildTime()}.apk"
+            }
+        }
+    }
+    /* 然后你会发现打包出来的文件名贼特么长 */
+}
+
+/* 获取系统当前时间 */
+
+static def buildTime() {
+    /* 获取北京时间 */
+    return new Date().format("yyyy-MM-dd-HH-mm-ss", TimeZone.getTimeZone("GMT+08:00"))
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:support-vector-drawable:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    /* JSON解析 */
+    implementation 'com.google.code.gson:gson:2.8.5'
+    /* 网络访问 */
+    implementation 'com.squareup.okhttp3:okhttp:3.14.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    /* 异步任务 */
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    /* 生命周期管理 */
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
+    /* DEX拆分 */
+    implementation 'com.android.support:multidex:1.0.3'
+    /* 视图注入 */
+    implementation 'com.jakewharton:butterknife:9.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
+    /* 图片加载 */
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    /* 圆形图片 */
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    /* 图片处理 */
+    implementation 'jp.wasabeef:glide-transformations:3.0.1'
+    /* V4包支持 */
+    implementation 'com.android.support:support-v4:28.0.0'
+    /* 下拉刷新上拉加载支持 */
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    /* Banner */
+    implementation 'com.youth.banner:banner:1.4.10'
+    /* RecyclerView适配器 */
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+    /* 事件总线 */
+    implementation 'com.squareup:otto:1.3.8'
+    /* 日志打印 */
+    implementation 'com.orhanobut:logger:2.2.0'
+}

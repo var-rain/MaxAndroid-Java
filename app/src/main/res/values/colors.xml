@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/app_main</color>
+    <color name="colorPrimaryDark">@color/app_main</color>
+    <color name="colorAccent">@color/app_main</color>
+
+    <!-- 主色 -->
+    <color name="app_main">#00AFF0</color>
+    <!-- 白色 -->
+    <color name="app_white">#ffffff</color>
+    <!-- 黑色 -->
+    <color name="app_black">#000000</color>
+    <!-- 红色 -->
+    <color name="app_red">#ff0000</color>
+    <!-- 橙色 -->
+    <color name="app_orange">#ff4000</color>
+    <!-- 粉色 -->
+    <color name="app_pink">#ff63a1</color>
+    <!-- 透明 -->
+    <color name="app_alpha">#00000000</color>
+    <!-- 透明 -->
+    <color name="translucent">@color/app_alpha</color>
+    <!-- 暗白色 -->
+    <color name="app_dark_white">#eeeeee</color>
+    <!-- 亮白色,与Activity默认背景色一致 -->
+    <color name="app_light_white">@color/background_material_light</color>
+    <!-- 输入框提示文字颜色 -->
+    <color name="text_hint">#eeeeee</color>
+    <!-- 消息提示框背景色 -->
+    <color name="notice_background">@color/app_main</color>
+    <!-- 加载框背景色 -->
+    <color name="loading_view_bg">@color/app_main</color>
+    <!-- 加载框以外的背景色 -->
+    <color name="loading_bg_color">#40000000</color>
+    <!-- 分割线颜色 -->
+    <color name="app_split_line_color">@color/app_dark_white</color>
+    <!-- 对话框文字颜色 -->
+    <color name="app_dialog_text">#666666</color>
+    <!-- 对话框取消按钮 -->
+    <color name="app_dialog_cancel">#888888</color>
+    <!-- 暗色文字 -->
+    <color name="text_dark">#444444</color>
+    <!-- 亮色文字 -->
+    <color name="text_light">#bababa</color>
+    <!-- TOAST背景色 -->
+    <color name="app_toast_bg">#80000000</color>
+</resources>

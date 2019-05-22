@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DoubleWaveView">
+        <!-- 水位高度 -->
+        <attr name="dw_water_level" format="integer" />
+        <!-- 浪高 -->
+        <attr name="dw_wave_height" format="dimension" />
+        <!-- 背景颜色 -->
+        <attr name="dw_bg_color" format="color" />
+        <!-- 波浪颜色 -->
+        <attr name="dw_wave_color" format="color" />
+        <!-- 波浪速率 -->
+        <attr name="dw_velocity" format="float" />
+        <!-- 波浪透明度 -->
+        <attr name="dw_wave_alpha" format="float" />
+        <!-- 是否裁剪圆形 -->
+        <attr name="dw_circle" format="boolean" />
+    </declare-styleable>
+</resources>

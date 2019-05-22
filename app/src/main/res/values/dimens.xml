@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 文字大小 -->
+    <dimen name="text_8">8sp</dimen>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_22">22sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_26">26sp</dimen>
+    <dimen name="text_28">28sp</dimen>
+    <dimen name="text_30">30sp</dimen>
+    <dimen name="text_32">32sp</dimen>
+    <dimen name="text_34">34sp</dimen>
+    <dimen name="text_36">36sp</dimen>
+
+    <!-- 布局边距 -->
+    <dimen name="size_8">8dp</dimen>
+    <dimen name="size_10">10dp</dimen>
+    <dimen name="size_12">12dp</dimen>
+    <dimen name="size_14">14dp</dimen>
+    <dimen name="size_16">16dp</dimen>
+    <dimen name="size_18">18dp</dimen>
+    <dimen name="size_20">20dp</dimen>
+    <dimen name="size_22">22dp</dimen>
+    <dimen name="size_24">24dp</dimen>
+    <dimen name="size_26">26dp</dimen>
+    <dimen name="size_28">28dp</dimen>
+    <dimen name="size_30">30dp</dimen>
+    <dimen name="size_32">32dp</dimen>
+    <dimen name="size_34">34dp</dimen>
+    <dimen name="size_36">36dp</dimen>
+    <dimen name="size_38">38dp</dimen>
+    <dimen name="size_40">40dp</dimen>
+    <dimen name="size_42">42dp</dimen>
+    <dimen name="size_44">44dp</dimen>
+    <dimen name="size_46">46dp</dimen>
+    <dimen name="size_48">48dp</dimen>
+    <dimen name="size_50">50dp</dimen>
+    <dimen name="size_52">52dp</dimen>
+    <dimen name="size_54">54dp</dimen>
+    <dimen name="size_56">56dp</dimen>
+    <dimen name="size_58">58dp</dimen>
+    <dimen name="size_60">60dp</dimen>
+    <dimen name="size_62">62dp</dimen>
+    <dimen name="size_64">64dp</dimen>
+
+    <dimen name="notice_min_height">100dp</dimen>
+</resources>
