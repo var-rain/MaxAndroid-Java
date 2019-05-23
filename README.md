@@ -1,4 +1,6 @@
 #### MaxAndroid
+[![Github release](https://img.shields.io/badge/MaxAndroid--Java-V1.0.0-green.svg)]()
+
 Android 应用程序快速开发聚合框架
 #### 项目介绍
 用于快速开发Android应用程序的模板项目,集成常用第三方依赖,各种封装,各种工具类,开箱即用,方便你快速开发出优质的APP
