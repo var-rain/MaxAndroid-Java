@@ -1,6 +1,6 @@
 package net.lingin.max.android.net;
 
-import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle3.LifecycleTransformer;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;

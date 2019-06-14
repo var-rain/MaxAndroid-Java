@@ -2,10 +2,11 @@ package net.lingin.max.android.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
 
 import net.lingin.max.android.MainApplication;
 

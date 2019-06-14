@@ -4,7 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.support.multidex.MultiDexApplication;
+
+import androidx.multidex.MultiDexApplication;
 
 import net.lingin.max.android.exceptions.crash.GlobalCrashCapture;
 import net.lingin.max.android.net.Network;

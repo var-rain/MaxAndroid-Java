@@ -3,10 +3,11 @@ package net.lingin.max.android.widget;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.res.Resources;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.view.View;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
 
 import net.lingin.max.android.R;
 import net.lingin.max.android.ui.listener.OnAnimationListener;

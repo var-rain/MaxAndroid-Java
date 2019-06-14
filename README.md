@@ -1,5 +1,5 @@
 #### MaxAndroid
-[![Github release](https://img.shields.io/badge/MaxAndroid--Java-V1.0.0-green.svg)]()
+[![Github release](https://img.shields.io/badge/MaxAndroid--Java-2.0.0-green.svg)]()
 
 Android 应用程序快速开发聚合框架
 #### 项目介绍
@@ -17,7 +17,6 @@ Android 应用程序快速开发聚合框架
 - 自定义异常信号处理( 登录验证拦截, 非空验证拦截, 代码运行截断等多种用途 )
 - ViewPager Adapter
 - 万能的 RecyclerView Adapter (来自 BaseRecyclerViewAdapterHelper )
-- 日志打印 (来自 com.orhanobut.logger )
 - REST ful API 网络请求封装 ( OkHttp + Retrofit )
 - 网络请求返回统一处理
 - 网络请求线程调度封装 ( RxJava / RxAndroid )
@@ -47,8 +46,6 @@ Android 应用程序快速开发聚合框架
 - Glide 图片加载集成
 - CircleImageView 圆形图片集成
 - Glide-Transformations 图像处理集成
-- SmartRefreshLayout 下拉刷新上拉加载集成
-- Banner 集成
 - Realm 数据库集成
 - Java Lambda 表达式支持
 - Dex 拆分支持
@@ -65,6 +62,26 @@ Android 应用程序快速开发聚合框架
 - 修改 SP ( SharedPreferences ) 工具类中的储存文件名称
 - 修改项目的 Git 目标地址
 - 然后尽情享用吧
+
+#### 更新日志
+- #### 2.0.0
+1. 迁移Android支持库引用到AndroidX
+2. 升级OkHttp3 ( 3.14.0 -> 3.14.2 )
+3. 升级Retrofit2 ( 2.4.0 -> 2.6.0 )
+4. 升级Retrofit2:converter-gson ( 2.4.0 -> 2.6.0 )
+5. 升级Retrofit2:adapter-rxjava2 ( 2.4.0 -> 2.6.0 )
+6. 升级RxJava2 ( 2.2.8 -> 2.2.9 )
+7. 升级RxLifecycle2 -> RxLifecycle3 ( 2.2.2 -> 3.0.0 )
+8. 升级ButterKnife ( 9.0.0 -> 10.1.0 )
+9. 升级ButterKnife-Compiler ( 9.0.0 -> 10.1.0 )
+10. 升级Glide ( 4.8.0 -> 4.9.0 )
+11. 升级Glide-Compiler ( 4.8.0 -> 4.9.0 )
+12. 升级Glide-Transformations ( 3.0.1 -> 4.0.1 )
+13. 移除android.support.v4包
+14. 移除日志打印 ( com.orhanobut.logger )
+15. 移除下拉刷新上拉加载支持 ( SmartRefreshLayout & SmartRefreshHeader )
+16. 移除Banner
+
 
 #### 代码演示
 - Activity / Fragment

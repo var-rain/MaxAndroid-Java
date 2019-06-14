@@ -1,6 +1,6 @@
 package net.lingin.max.android.ui.listener;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by: var_rain.

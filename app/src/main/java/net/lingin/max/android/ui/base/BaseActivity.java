@@ -4,15 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
 import net.lingin.max.android.R;
 import net.lingin.max.android.beans.SystemUIVisibility;

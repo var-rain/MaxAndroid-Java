@@ -1,7 +1,8 @@
 package net.lingin.max.android.ui.activity.filter;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by: var_rain.

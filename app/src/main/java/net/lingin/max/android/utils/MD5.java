@@ -52,10 +52,10 @@ public class MD5 {
             digest = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            Log.e("Not found MD5 encode algorithm ! encode data [s%]", Arrays.toString(data));
+            Log.e("Not found MD5 encode algorithm ! encode data [" + Arrays.toString(data) + "]");
         }
         if (digest == null) {
-            Log.e("MessageDigest object is null ! encode data [s%]", Arrays.toString(data));
+            Log.e("MessageDigest object is null ! encode data [" + Arrays.toString(data) + "]");
             return "";
         }
         String md = new BigInteger(1, digest.digest(data)).toString(length);
