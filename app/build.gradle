@@ -134,6 +134,4 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:4.0.1'
     /* RecyclerView适配器 */
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
-    /* 事件总线 */
-    implementation 'com.squareup:otto:1.3.8'
 }

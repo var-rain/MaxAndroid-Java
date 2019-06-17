@@ -12,7 +12,7 @@ import java.util.Arrays;
  * Created date: 2018/10/17.
  * Description: MD5工具类
  */
-public class MD5 {
+public class MD5Utils {
 
     /**
      * 计算字符串的MD5

@@ -15,9 +15,8 @@ import net.lingin.max.android.MainApplication;
 import net.lingin.max.android.R;
 import net.lingin.max.android.exceptions.ExceptionHandle;
 import net.lingin.max.android.logger.Log;
-import net.lingin.max.android.threads.ThreadPool;
-import net.lingin.max.android.utils.Notice;
-import net.lingin.max.android.utils.Toast;
+import net.lingin.max.android.threads.Worker;
+import net.lingin.max.android.utils.ToastUtils;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -104,13 +103,13 @@ public class GlobalCrashCapture implements Thread.UncaughtExceptionHandler {
      * @param ex 异常信息
      */
     private void handleException(Throwable ex) {
-        ThreadPool.execute(() -> {
+        Worker.execute(() -> {
             Looper.prepare();
             if (BuildConfig.DEBUG) {
                 ex.printStackTrace();
-                Toast.show(ex.getLocalizedMessage(), Gravity.CENTER, Toast.LENGTH_LONG);
+                ToastUtils.show(ex.getLocalizedMessage(), Gravity.CENTER, ToastUtils.LENGTH_LONG);
             } else {
-                Notice.show(R.string.app_exception_text);
+                ToastUtils.show(R.string.app_exception_text);
             }
             dumpException(ex);
             delay();
@@ -177,8 +176,8 @@ public class GlobalCrashCapture implements Thread.UncaughtExceptionHandler {
      */
     private void dumpDeviceInfo(PrintWriter writer) throws PackageManager.NameNotFoundException {
         PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES);
-        writer.println("App Version: " + packageInfo.versionName + "_" + packageInfo.versionCode);
-        writer.println("Android OS Version: " + Build.VERSION.RELEASE + "_" + Build.VERSION.SDK_INT);
+        writer.println("App VersionUtils: " + packageInfo.versionName + "_" + packageInfo.versionCode);
+        writer.println("Android OS VersionUtils: " + Build.VERSION.RELEASE + "_" + Build.VERSION.SDK_INT);
         writer.println("Device Vendor: " + Build.MANUFACTURER);
         writer.println("Device Mode: " + Build.MODEL);
         writer.println("Device CPU API: " + Build.CPU_ABI);

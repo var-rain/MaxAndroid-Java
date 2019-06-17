@@ -1,9 +1,5 @@
 package net.lingin.max.android.exceptions;
 
-import net.lingin.max.android.R;
-import net.lingin.max.android.ui.listener.OnDialogListener;
-import net.lingin.max.android.utils.Dialog;
-
 /**
  * Created by: var_rain.
  * Created time: 2019/5/19.
@@ -33,22 +29,7 @@ public class ExceptionHandle {
      * @return true: 已处理 false: 未处理
      */
     public boolean handleException(Throwable throwable) {
-        if (throwable instanceof NotSignException) {
-            handleNotSignException();
-            return true;
-        }
+        // TODO: 2019/6/17 处理你的自定义异常信息
         return false;
-    }
-
-    /**
-     * 处理未登录异常信息
-     */
-    private void handleNotSignException() {
-        Dialog.show(R.string.app_dialog_no_sign, new OnDialogListener() {
-            @Override
-            public void onClick(boolean isOK) {
-
-            }
-        });
     }
 }

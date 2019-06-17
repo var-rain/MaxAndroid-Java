@@ -9,7 +9,7 @@ import androidx.multidex.MultiDexApplication;
 
 import net.lingin.max.android.exceptions.crash.GlobalCrashCapture;
 import net.lingin.max.android.net.Network;
-import net.lingin.max.android.threads.ThreadPool;
+import net.lingin.max.android.threads.Worker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +35,17 @@ public class MainApplication extends MultiDexApplication implements Application.
     public void onCreate() {
         super.onCreate();
         instance = this;
+        // 初始化全局异常捕获
         GlobalCrashCapture.instance().init(this);
+        // 创建Activity储存管理
         activities = new ArrayList<>();
+        // 注册Activity生命周期回调
         registerActivityLifecycleCallbacks(this);
+        // 初始化线程池
+        Worker.init(Worker.newCachedThreadPool());
+        // 初始化网络请求
         Network.init();
+        // 初始化Realm数据库
         Realm.init(this);
     }
 
@@ -70,7 +77,7 @@ public class MainApplication extends MultiDexApplication implements Application.
             }
         }
         activities.clear();
-        ThreadPool.destroy();
+        Worker.destroy();
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(0);
     }

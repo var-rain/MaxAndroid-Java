@@ -7,7 +7,7 @@ import android.util.Base64;
  * Created date: 2018/10/18.
  * Description: BASE64加解密工具类
  */
-public class BASE64 {
+public class BASE64Utils {
 
     /**
      * BASE64加密方法
@@ -16,7 +16,7 @@ public class BASE64 {
      * @return 返回加密后的BASE64字符串
      */
     public static String encrypt(String data) {
-        return Text.clean(Base64.encodeToString(data.getBytes(), Base64.DEFAULT));
+        return TextUtils.clean(Base64.encodeToString(data.getBytes(), Base64.DEFAULT));
     }
 
     /**

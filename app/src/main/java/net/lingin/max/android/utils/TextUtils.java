@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * Created date: 2018/10/21.
  * Description: 字符串工具类
  */
-public class Text {
+public class TextUtils {
 
     /**
      * 判断字符串是否为空

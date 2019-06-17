@@ -1,4 +1,4 @@
-package net.lingin.max.android.beans;
+package net.lingin.max.android.ui.base.config;
 
 /**
  * Created by: var_rain.

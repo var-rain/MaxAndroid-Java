@@ -8,7 +8,7 @@ import net.lingin.max.android.widget.NoticeWidget;
  * Created date: 2018/10/21.
  * Description: 消息提示统一接口
  */
-public class Notice {
+public class NoticeUtils {
 
     /**
      * 显示消息提示

@@ -15,28 +15,28 @@ import net.lingin.max.android.MainApplication;
  * Created date: 2018/11/7.
  * Description: 视图注入工具类,注入View对象到当前显示的Activity中
  */
-public class InjectView {
+public class InjectViewUtils {
 
     /* 静态实例 */
     @SuppressLint("StaticFieldLeak")
-    private static InjectView instance;
+    private static InjectViewUtils instance;
 
     /**
      * 构造方法
      */
-    private InjectView() {
+    private InjectViewUtils() {
     }
 
     /**
      * 获取当前对象的静态实例
      *
-     * @return 返回 {@link InjectView} 对象
+     * @return 返回 {@link InjectViewUtils} 对象
      */
-    public static InjectView instance() {
-        if (InjectView.instance == null) {
-            InjectView.instance = new InjectView();
+    public static InjectViewUtils instance() {
+        if (InjectViewUtils.instance == null) {
+            InjectViewUtils.instance = new InjectViewUtils();
         }
-        return InjectView.instance;
+        return InjectViewUtils.instance;
     }
 
     /**

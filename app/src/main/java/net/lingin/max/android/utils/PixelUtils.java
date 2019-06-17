@@ -7,7 +7,7 @@ import android.content.res.Resources;
  * Created date: 2018/12/22.
  * Description: 像素单位转换工具类
  */
-public class Pixel {
+public class PixelUtils {
 
     /**
      * dp转px

@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import net.lingin.max.android.R;
 import net.lingin.max.android.ui.base.BaseActivity;
-import net.lingin.max.android.utils.Version;
+import net.lingin.max.android.utils.VersionUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -60,7 +60,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onData() {
-        splashAppVersion.setText(getString(R.string.app_version, Version.appVersionName()));
+        splashAppVersion.setText(getString(R.string.app_version, VersionUtils.appVersionName()));
     }
 
     @Override

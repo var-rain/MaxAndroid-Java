@@ -4,7 +4,7 @@ import com.google.gson.JsonParseException;
 
 import net.lingin.max.android.R;
 import net.lingin.max.android.net.entity.result.Result;
-import net.lingin.max.android.utils.Notice;
+import net.lingin.max.android.utils.ToastUtils;
 
 import org.json.JSONException;
 
@@ -35,7 +35,7 @@ public abstract class Subs<T> implements Observer<Result<T>> {
         if (data.getCode() == 200) {
             onSuccess(data.getData());
         } else {
-            Notice.show(data.getMsg());
+            ToastUtils.show(data.getMsg());
             onFail();
         }
     }
@@ -44,15 +44,15 @@ public abstract class Subs<T> implements Observer<Result<T>> {
     public void onError(Throwable e) {
         onCompleted();
         if (e instanceof HttpException) {
-            Notice.show(R.string.toast_error_http);
+            ToastUtils.show(R.string.toast_error_http);
         } else if (e instanceof ConnectException || e instanceof UnknownHostException) {
-            Notice.show(R.string.toast_error_connect);
+            ToastUtils.show(R.string.toast_error_connect);
         } else if (e instanceof InterruptedIOException) {
-            Notice.show(R.string.toast_error_time_out);
+            ToastUtils.show(R.string.toast_error_time_out);
         } else if (e instanceof JsonParseException || e instanceof JSONException || e instanceof ParseException) {
-            Notice.show(R.string.toast_error_data);
+            ToastUtils.show(R.string.toast_error_data);
         } else {
-            Notice.show(R.string.toast_error_unknown);
+            ToastUtils.show(R.string.toast_error_unknown);
         }
         onFail();
     }

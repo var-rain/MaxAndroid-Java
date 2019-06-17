@@ -8,7 +8,7 @@ import net.lingin.max.android.widget.LoadingWidget;
  * Created time: 2019/5/22.
  * Description: 加载框统一接口
  */
-public class Loading {
+public class LoadingUtils {
 
     /**
      * 显示加载框

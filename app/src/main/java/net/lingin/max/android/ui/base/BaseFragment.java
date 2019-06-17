@@ -16,6 +16,8 @@ import com.trello.rxlifecycle3.components.support.RxFragment;
 
 import net.lingin.max.android.ui.listener.OnPermissionRequestListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import butterknife.ButterKnife;
@@ -51,18 +53,16 @@ public abstract class BaseFragment extends RxFragment {
      */
     protected void requestSelfPermission(@NonNull String[] permissions, OnPermissionRequestListener callback) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            int[] granted = new int[permissions.length];
-            for (int i = 0; i < permissions.length; i++) {
-                int self = ActivityCompat.checkSelfPermission(Objects.requireNonNull(getContext()), permissions[i]);
+            for (String permission : permissions) {
+                int self = ActivityCompat.checkSelfPermission(Objects.requireNonNull(getContext()), permission);
                 if (self == PackageManager.PERMISSION_DENIED) {
                     this.callback = callback;
                     this.requestPermissions(permissions, REQUEST_PERMISSION_CODE);
                     return;
                 }
-                granted[i] = PackageManager.PERMISSION_GRANTED;
             }
             if (callback != null) {
-                callback.onPermissionRequest(true, permissions, granted);
+                callback.onPermissionRequest(true, new ArrayList<>());
             }
         }
     }
@@ -73,12 +73,14 @@ public abstract class BaseFragment extends RxFragment {
         if (requestCode == REQUEST_PERMISSION_CODE) {
             if (callback != null) {
                 boolean authorize = true;
-                for (int result : grantResults) {
-                    if (result == PackageManager.PERMISSION_DENIED) {
+                List<String> perm = new ArrayList<>();
+                for (int i = 0; i < grantResults.length; i++) {
+                    if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
                         authorize = false;
+                        perm.add(permissions[i]);
                     }
                 }
-                callback.onPermissionRequest(authorize, permissions, grantResults);
+                callback.onPermissionRequest(authorize, perm);
                 callback = null;
             }
         }

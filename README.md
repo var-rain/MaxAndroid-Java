@@ -1,5 +1,5 @@
 #### MaxAndroid
-[![Github release](https://img.shields.io/badge/MaxAndroid--Java-2.0.0-green.svg)]()
+[![Github release](https://img.shields.io/badge/MaxAndroid--Java-2.0.1-green.svg)]()
 
 Android 应用程序快速开发聚合框架
 #### 项目介绍
@@ -37,7 +37,6 @@ Android 应用程序快速开发聚合框架
 - BASE64 加解密工具类
 - MD5 计算工具类
 - JSON 序列化反序列化工具类 ( GSON )
-- 事件总线工具类 ( Otto )
 - 像素单位转换工具类
 - SharedPreferences 轻量数据储存封装
 - 字符串工具类
@@ -53,19 +52,28 @@ Android 应用程序快速开发聚合框架
 - APK 打包文件名带日期时间
 
 #### 打开方式
-- 同步项目到本地
+- 点击此项目的 release 板块或[点击此处](https://github.com/scvax/MaxAndroid-Java/releases)前往下载
 - 修改项目名
-- 修改包名
+- 修改包名 ( Android Studio 快捷键 Shift + F6 )
 - 修改 Subs 类中的请求状态码判断 ( 根据需求 )
 - 修改 app/build.gradle 中的特性配置
 - 修改 Androidmanifest.xml中的 scheme 协议名称
-- 修改 SP ( SharedPreferences ) 工具类中的储存文件名称
+- 修改 SharedPreferencesUtils ( SharedPreferences ) 工具类中的储存文件名称
 - 修改项目的 Git 目标地址
 - 然后尽情享用吧
 
 #### 更新日志
+- #### 2.0.1
+1. 移除事件总线依赖 ( Otto ) 原因是因为在部分手机上发现其存在某些问题,当然EventBus也同样,不推荐使用事件总线的方式,(滥用)这会是你的代码逻辑难以理解,并且会出现相当一部分问题
+2. 移除Otto工具类
+3. 移除 exceptions.crash 包下的 NoSignException 类,并删除 ExceptionHandle 类的 NoSignException 异常处理方法,需要则自行添加
+4. 修改 BaseActivity & BaseFragment 权限请求的回调参数传递,详细修改细节请往下
+5. 修改线程池的初始化创建方式,由原来的静态初始化修改为手动调用初始化,可选线程池类型,类名变更为 Worker 
+6. 原 beans 包下的 SystemUIVisibility 类变更到 ui.base.config 包下
+7. 修改默认消息提示方式由原来的 Notice 变更为 Toast
+8. utils 包下的所有工具类统一添加 Utils 后缀
 - #### 2.0.0
-1. 迁移Android支持库引用到AndroidX
+1. ```迁移Android支持库引用到AndroidX```
 2. 升级OkHttp3 ( 3.14.0 -> 3.14.2 )
 3. 升级Retrofit2 ( 2.4.0 -> 2.6.0 )
 4. 升级Retrofit2:converter-gson ( 2.4.0 -> 2.6.0 )
@@ -169,50 +177,14 @@ public class SimpleActivity extends BaseActivity {
 
             /**
              * @param authorize     是否全部授权成功
-             * @param permissions   请求权限数组
-             * @param granted       授权结果数组
+             * @param permissions   未通过授权的权限,在 authorize 返回 true 的时候该数据列表为空 ( size = 0 )
              */
             @Override
-            public void onPermissionRequest(boolean authorize, @NonNull String[] permissions, @NonNull int[] granted) {
-                /* authorize 为 true 的情况下不需要再去判断授权结果 */
+            public void onPermissionRequest(boolean authorize, @NonNull List<String> permissions) {
+                /* authorize 为 true 的情况下即所有权限授权通过,为 false 的情况下 permissions 中的权限名称均为未授权的权限 */
             }
         });
     }
-}
-```
-- 事件总线
-```java
-public class SimpleActivity extends BaseActivity {
-
-    ......
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        /* 注册 */
-        Otto.register(this);
-    }
-    
-    /**
-     * 事件接收
-     */
-    @Subscribe
-    public void handleEvent(Object object){
-        /* 接收到事件后的处理 Object为自定义总线消息对象,实体类 */
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        /* 取消注册 */
-        Otto.unregister(this);
-    }
-
-    ......
-
-    /* 在任意类的任意位置调用即可发送总线消息 */
-    Otto.post(new Object)
-
 }
 ```
 - 网络请求
@@ -256,3 +228,6 @@ public class SimpleActivity extends BaseActivity {
 
 #### 最后
 如果大家有什么好的建议或意见可以说出来,让这个项目更加完善,我也会不断的补充和修改此项目,以达到更好的解决开发中的各种繁琐复杂的工作
+
+#### 另外
+MAX 计划开启

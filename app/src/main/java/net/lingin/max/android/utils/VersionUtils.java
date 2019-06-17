@@ -10,7 +10,7 @@ import net.lingin.max.android.MainApplication;
  * Created date: 2019/2/24.
  * Description: 版本相关工具类
  */
-public class Version {
+public class VersionUtils {
 
     /**
      * 获取应用程序版本号

@@ -16,8 +16,11 @@ import androidx.core.app.ActivityCompat;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
 import net.lingin.max.android.R;
-import net.lingin.max.android.beans.SystemUIVisibility;
+import net.lingin.max.android.ui.base.config.SystemUIVisibility;
 import net.lingin.max.android.ui.listener.OnPermissionRequestListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -178,35 +181,34 @@ public abstract class BaseActivity extends RxAppCompatActivity {
      */
     protected void requestSelfPermission(@NonNull String[] permissions, OnPermissionRequestListener callback) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            int[] granted = new int[permissions.length];
-            for (int i = 0; i < permissions.length; i++) {
-                int self = ActivityCompat.checkSelfPermission(this, permissions[i]);
+            for (String permission : permissions) {
+                int self = ActivityCompat.checkSelfPermission(this, permission);
                 if (self == PackageManager.PERMISSION_DENIED) {
                     this.callback = callback;
                     ActivityCompat.requestPermissions(this, permissions, REQUEST_PERMISSION_CODE);
                     return;
                 }
-                granted[i] = PackageManager.PERMISSION_GRANTED;
             }
             if (callback != null) {
-                callback.onPermissionRequest(true, permissions, granted);
+                callback.onPermissionRequest(true, new ArrayList<>());
             }
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSION_CODE) {
             if (callback != null) {
                 boolean authorize = true;
-                for (int result : grantResults) {
-                    if (result == PackageManager.PERMISSION_DENIED) {
+                List<String> perm = new ArrayList<>();
+                for (int i = 0; i < grantResults.length; i++) {
+                    if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
                         authorize = false;
+                        perm.add(permissions[i]);
                     }
                 }
-                callback.onPermissionRequest(authorize, permissions, grantResults);
+                callback.onPermissionRequest(authorize, perm);
                 callback = null;
             }
         }

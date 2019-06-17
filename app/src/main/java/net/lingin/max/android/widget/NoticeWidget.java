@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import net.lingin.max.android.R;
 import net.lingin.max.android.ui.listener.OnAnimationListener;
-import net.lingin.max.android.utils.InjectView;
+import net.lingin.max.android.utils.InjectViewUtils;
 
 /**
  * Created by: var_rain.
@@ -58,14 +58,14 @@ public class NoticeWidget {
     @SuppressLint("InflateParams")
     public void showNotice(String content) {
         if (notice == null) {
-            notice = InjectView.instance().make(R.layout.widget_notice);
+            notice = InjectViewUtils.instance().make(R.layout.widget_notice);
             text = notice.findViewById(R.id.notice_text);
         }
         text.setText(content);
         if (anim.isRunning()) {
             anim.end();
         }
-        InjectView.instance().inject(notice);
+        InjectViewUtils.instance().inject(notice);
         anim.start();
     }
 
@@ -82,7 +82,7 @@ public class NoticeWidget {
         set.addListener(new OnAnimationListener() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                InjectView.instance().clean(notice);
+                InjectViewUtils.instance().clean(notice);
             }
         });
         return set;

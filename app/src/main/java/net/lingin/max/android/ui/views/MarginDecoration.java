@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.lingin.max.android.utils.Pixel;
+import net.lingin.max.android.utils.PixelUtils;
 
 /**
  * Created by: var_rain.
@@ -21,7 +21,7 @@ public class MarginDecoration extends RecyclerView.ItemDecoration {
     private int margin;
 
     public MarginDecoration(float margin) {
-        this.margin = Pixel.dp2px(margin);
+        this.margin = PixelUtils.dp2px(margin);
     }
 
     @Override

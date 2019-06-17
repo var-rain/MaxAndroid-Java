@@ -8,7 +8,7 @@ import net.lingin.max.android.widget.DialogWidget;
  * Created time: 2019/5/22.
  * Description: 对话框统一接口
  */
-public class Dialog {
+public class DialogUtils {
 
     /**
      * 显示对话框

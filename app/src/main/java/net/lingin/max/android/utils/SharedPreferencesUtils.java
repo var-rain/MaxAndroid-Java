@@ -10,7 +10,7 @@ import net.lingin.max.android.MainApplication;
  * Created date: 2018/10/21.
  * Description: SharedPreferences轻量数据储存工具类
  */
-public class SP {
+public class SharedPreferencesUtils {
 
     /* 储存对象 */
     private static SharedPreferences sp;
@@ -19,8 +19,8 @@ public class SP {
 
     /* 初始化 */
     static {
-        SP.sp = MainApplication.instance().getSharedPreferences("MAX_ANDROID", Context.MODE_PRIVATE);
-        SP.editor = SP.sp.edit();
+        SharedPreferencesUtils.sp = MainApplication.instance().getSharedPreferences("MAX_ANDROID", Context.MODE_PRIVATE);
+        SharedPreferencesUtils.editor = SharedPreferencesUtils.sp.edit();
     }
 
     /**
@@ -30,7 +30,7 @@ public class SP {
      * @param value 值
      */
     public static void put(String key, String value) {
-        SP.editor.putString(key, value).apply();
+        SharedPreferencesUtils.editor.putString(key, value).apply();
     }
 
     /**
@@ -40,7 +40,7 @@ public class SP {
      * @param value 值
      */
     public static void put(String key, boolean value) {
-        SP.editor.putBoolean(key, value).apply();
+        SharedPreferencesUtils.editor.putBoolean(key, value).apply();
     }
 
     /**
@@ -50,7 +50,7 @@ public class SP {
      * @param value 值
      */
     public static void put(String key, float value) {
-        SP.editor.putFloat(key, value).apply();
+        SharedPreferencesUtils.editor.putFloat(key, value).apply();
     }
 
     /**
@@ -60,7 +60,7 @@ public class SP {
      * @param value 值
      */
     public static void put(String key, int value) {
-        SP.editor.putInt(key, value).apply();
+        SharedPreferencesUtils.editor.putInt(key, value).apply();
     }
 
     /**
@@ -70,7 +70,7 @@ public class SP {
      * @param value 值
      */
     public static void put(String key, long value) {
-        SP.editor.putLong(key, value).apply();
+        SharedPreferencesUtils.editor.putLong(key, value).apply();
     }
 
     /**
@@ -81,7 +81,7 @@ public class SP {
      * @return 返回获取到的数据或默认值
      */
     public static String get(String key, String def) {
-        return SP.sp.getString(key, def);
+        return SharedPreferencesUtils.sp.getString(key, def);
     }
 
     /**
@@ -92,7 +92,7 @@ public class SP {
      * @return 返回获取到的数据或默认值
      */
     public static boolean get(String key, boolean def) {
-        return SP.sp.getBoolean(key, def);
+        return SharedPreferencesUtils.sp.getBoolean(key, def);
     }
 
     /**
@@ -103,7 +103,7 @@ public class SP {
      * @return 返回获取到的数据或默认值
      */
     public static float get(String key, float def) {
-        return SP.sp.getFloat(key, def);
+        return SharedPreferencesUtils.sp.getFloat(key, def);
     }
 
     /**
@@ -114,7 +114,7 @@ public class SP {
      * @return 返回获取到的数据或默认值
      */
     public static int get(String key, int def) {
-        return SP.sp.getInt(key, def);
+        return SharedPreferencesUtils.sp.getInt(key, def);
     }
 
     /**
@@ -125,7 +125,7 @@ public class SP {
      * @return 返回获取到的数据或默认值
      */
     public static long get(String key, long def) {
-        return SP.sp.getLong(key, def);
+        return SharedPreferencesUtils.sp.getLong(key, def);
     }
 
     /**
@@ -134,6 +134,6 @@ public class SP {
      * @param key 键
      */
     public static void remove(String key) {
-        SP.editor.remove(key).apply();
+        SharedPreferencesUtils.editor.remove(key).apply();
     }
 }

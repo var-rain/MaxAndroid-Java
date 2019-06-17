@@ -8,7 +8,7 @@ import com.google.gson.JsonSyntaxException;
  * Created date: 2018/10/6.
  * Description: JSON序列化与反序列化工具类
  */
-public class JSON {
+public class JSONUtils {
 
     private static Gson gson = new Gson();
 

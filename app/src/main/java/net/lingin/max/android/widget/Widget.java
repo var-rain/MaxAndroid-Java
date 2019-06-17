@@ -11,12 +11,12 @@ import androidx.annotation.LayoutRes;
 
 import net.lingin.max.android.R;
 import net.lingin.max.android.ui.listener.OnAnimationListener;
-import net.lingin.max.android.utils.InjectView;
+import net.lingin.max.android.utils.InjectViewUtils;
 
 /**
  * Created by: var_rain.
  * Created time: 2019/5/22.
- * Description: 自定义控件父类,包括Toast,Dialog,Loading等一切显示于应用内的View
+ * Description: 自定义控件父类,包括Toast,DialogUtils,Loading等一切显示于应用内的View
  */
 public abstract class Widget {
 
@@ -33,9 +33,9 @@ public abstract class Widget {
      * 构造方法
      */
     Widget() {
-        this.view = InjectView.instance().make(onInitLayoutRes());
+        this.view = InjectViewUtils.instance().make(onInitLayoutRes());
         if (this.isShowBackground()) {
-            this.background = InjectView.instance().make(R.layout.widget_background);
+            this.background = InjectViewUtils.instance().make(R.layout.widget_background);
             this.background.setBackgroundColor(backgroundColor());
             this.background.setOnClickListener(v -> onClickOut());
             this.initAnimation();
@@ -53,8 +53,8 @@ public abstract class Widget {
         showBackground.addListener(new OnAnimationListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                InjectView.instance().inject(background);
-                InjectView.instance().inject(view);
+                InjectViewUtils.instance().inject(background);
+                InjectViewUtils.instance().inject(view);
             }
         });
 
@@ -64,8 +64,8 @@ public abstract class Widget {
         hideBackground.addListener(new OnAnimationListener() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                InjectView.instance().clean(view);
-                InjectView.instance().clean(background);
+                InjectViewUtils.instance().clean(view);
+                InjectViewUtils.instance().clean(background);
             }
         });
     }
@@ -134,7 +134,7 @@ public abstract class Widget {
         if (showBackground != null) {
             showBackground.start();
         } else {
-            InjectView.instance().inject(view);
+            InjectViewUtils.instance().inject(view);
         }
     }
 
@@ -145,7 +145,7 @@ public abstract class Widget {
         if (hideBackground != null) {
             hideBackground.start();
         } else {
-            InjectView.instance().clean(view);
+            InjectViewUtils.instance().clean(view);
         }
     }
 }
