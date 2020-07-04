@@ -1,4 +1,4 @@
-package net.lingin.max.android.threads;
+package net.lingin.max.android.worker;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
  * Created date: 2018/10/20.
  * Description: 线程池
  */
+@SuppressWarnings("unused")
 public class Worker {
 
     private static ExecutorService service;

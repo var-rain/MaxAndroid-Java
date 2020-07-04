@@ -11,19 +11,17 @@ import android.view.WindowManager;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
-import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 import net.lingin.max.android.R;
 import net.lingin.max.android.ui.base.config.SystemUIVisibility;
-import net.lingin.max.android.ui.listener.OnPermissionRequestListener;
+import net.lingin.max.android.ui.base.listener.OnPermissionRequestListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by: var_rain.
@@ -31,21 +29,22 @@ import butterknife.Unbinder;
  * Description: Activity父类
  */
 @SuppressLint("Registered")
-public abstract class BaseActivity extends RxAppCompatActivity {
+@SuppressWarnings("all")
+public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity {
 
-    private Unbinder unbinder;
     private OnPermissionRequestListener callback;
     private final int REQUEST_PERMISSION_CODE = 999;
     private int visibility = View.SYSTEM_UI_FLAG_VISIBLE;
     private SystemUIVisibility config = new SystemUIVisibility();
+    protected T binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onSystemUIVisibility(config);
         setSystemUIVisibility();
-        setContentView(onLayout());
-        unbinder = ButterKnife.bind(this);
+        binding = DataBindingUtil.setContentView(this, onLayout());
+        binding.setLifecycleOwner(this);
         onObject();
         onView();
         onData();
@@ -95,6 +94,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         }
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -135,6 +135,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     /**
      * 透明状态栏 (Android 4.4+ 有效)
      */
+    @SuppressLint("ObsoleteSdkInt")
     private void translucentStatusBarStyle() {
         Window window = getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -156,6 +157,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     /**
      * 透明导航栏 (Android 4.4+ 有效)
      */
+    @SuppressLint("ObsoleteSdkInt")
     private void translucentNavigationBarStyle() {
         Window window = getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -257,9 +259,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if (unbinder != null) {
-            unbinder.unbind();
-            unbinder = null;
+        if (binding != null) {
+            binding.unbind();
         }
         super.onDestroy();
     }
