@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 /**
  * Created by: var_rain.
  * Created date: 2018/12/21.
- * Description: 状态栏占位,为避免沉浸式页面显示被状态栏遮挡
+ * Description: 自定义标题栏
  */
 public class StatusBar extends LinearLayout {
 
@@ -40,9 +40,9 @@ public class StatusBar extends LinearLayout {
      */
     private int statusBarHeight() {
         int result = 0;
-        int id = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (id != 0) {
-            result = getResources().getDimensionPixelSize(id);
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
     }

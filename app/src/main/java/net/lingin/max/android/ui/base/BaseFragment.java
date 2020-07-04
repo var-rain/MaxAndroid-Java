@@ -11,38 +11,37 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
 
-import com.trello.rxlifecycle3.components.support.RxFragment;
-
-import net.lingin.max.android.ui.listener.OnPermissionRequestListener;
+import net.lingin.max.android.ui.base.listener.OnPermissionRequestListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by: var_rain.
  * Created date: 2018/10/20.
  * Description: Fragment父类
  */
-public abstract class BaseFragment extends RxFragment {
+@SuppressWarnings("all")
+public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
 
-    private Unbinder unbinder;
     private OnPermissionRequestListener callback;
     private final int REQUEST_PERMISSION_CODE = 998;
+    protected T binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(onLayout(), container, false);
-        unbinder = ButterKnife.bind(this, view);
+        binding = DataBindingUtil.inflate(inflater, onLayout(), container, false);
+        binding.setLifecycleOwner(this);
         onObject();
         onView();
         onData();
-        return view;
+        return binding.getRoot();
     }
 
     /**
@@ -111,10 +110,9 @@ public abstract class BaseFragment extends RxFragment {
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
-        if (unbinder != null) {
-            unbinder.unbind();
-            unbinder = null;
+        if (binding != null) {
+            binding.unbind();
         }
+        super.onDestroyView();
     }
 }

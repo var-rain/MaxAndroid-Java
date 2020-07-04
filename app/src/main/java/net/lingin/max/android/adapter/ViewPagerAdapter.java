@@ -11,11 +11,12 @@ import java.util.List;
 /**
  * Created by: var_rain.
  * Created date: 2018/10/28.
- * Description: 主页滑动适配器
+ * Description: ViewPager适配器
  */
+@SuppressWarnings("unused")
 public class ViewPagerAdapter extends PagerAdapter {
 
-    /* 页面集合 */
+    // 页面数据
     private List<View> views;
 
     /**
