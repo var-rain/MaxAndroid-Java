@@ -1,5 +1,5 @@
 #### MaxAndroid
-[![Github release](https://img.shields.io/badge/MaxAndroid--Java-3.0.0-green.svg)]()
+[![Github release](https://img.shields.io/badge/MaxAndroid--Java-3.1.1-green.svg)]()
 
 Android 应用程序快速开发框架
 #### 项目介绍
