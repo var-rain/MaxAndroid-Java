@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "net.lingin.max.android"
+        applicationId "max.android.template"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -54,7 +54,7 @@ android {
         }
         pre {
             resValue('string', 'app_name', 'MaxAndroid')
-            buildConfigField "String", "SERVER_BASE", '"http://max.software.com/"'
+            buildConfigField "String", "SERVER_BASE", '"http://max.android.com/"'
         }
     }
 

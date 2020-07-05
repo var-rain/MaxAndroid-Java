@@ -6,6 +6,9 @@
     <string name="toast_error_data">数据异常</string>
     <string name="toast_error_unknown">未知错误</string>
 
+    <!-- 程序异常提示信息 -->
+    <string name="app_exception">程序刚刚摸了个鱼</string>
+
     <!-- 加载框 -->
     <string name="app_loading">加载中......</string>
 </resources>

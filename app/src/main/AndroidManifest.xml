@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="net.lingin.max.android">
+    package="max.android.template">
 
     <!-- 网络访问 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -31,7 +31,7 @@
         <!-- 文件访问 -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="net.lingin.max.android.FileProvider"
+            android:authorities="max.android.template.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
